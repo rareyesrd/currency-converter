@@ -1,0 +1,22 @@
+header{
+    background-color: rgba(85, 0, 255, 0.9);
+}
+.navbar ul{
+    display: flex;
+}
+.navbar ul li{
+    margin-right: 25px;
+    list-style: none;
+    padding: 10px;
+}
+
+ul li:hover{
+    background-color: rgb(85, 0, 255);
+
+}
+ul li a{  
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+
+}
