@@ -11,19 +11,28 @@ export class ConverterComponent implements OnInit {
 
   amount = 1;
   from = 'CAD';
-  to = 'USD'; 
-  rate= 0.78697;
+  to = 'USD';
+  rates: {[key: string]: number};
 
-  convert(): Number{
-    return this.amount * this.rate;
+  convert(): number {
+    return this.amount * this.rates[this.to];
   }
-  constructor(private Service: ExchangeService) {
-    this.Service.getRates(this.from).subscribe(response=>{
-      console.log(response)
-    })
-   }
+
+  loadRates(){
+    this.service.getRates(this.from).subscribe(res => {
+      this.rates = res.rates;
+    });
+  }
+
+  getAllCurrencies(): string[]{
+    return Object.keys(this.rates);
+  }
+  constructor(private service: ExchangeService) {
+
+  }
 
   ngOnInit(): void {
+    this.loadRates();
   }
 
 }

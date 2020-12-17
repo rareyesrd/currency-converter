@@ -7,9 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class ExchangeService {
   constructor(private http: HttpClient) {}
-
   getRates(base: string): Observable<ExchangeRatesResponse> {
-    let url = 'https://api.exchangeratesapi.io/latest?base=';
+    let url: string;
+    url = 'https://api.exchangeratesapi.io/latest?base=';
     return this.http.get<ExchangeRatesResponse>(`${url}${base}`);
   }
 }
